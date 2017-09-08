@@ -18,26 +18,26 @@
 			<div>
 			<div>
                 <span>Country </span>
-                <input required id="countries">
+                <input required name="country" id="countries">
 				</div>
 
             <br>
 			<div>
 
             <span> First name </span>
-                    <input required type="text" maxlength="15"> 
+                    <input required name="firstName" type="text" maxlength="15"> 
 						<span>Last name</span>
-                    <input required type="text" maxlength="15">
+                    <input required name="lastName" type="text" maxlength="15">
             </div>
 
             <br>
 			<div>
 
                 <span>Phone </span>
-                <input required type="text" maxlength="15" pattern="[0-9]{,15}">
+                <input required name="phone" type="text" maxlength="15" pattern="^[0-9]{1,15}$">
 				</div>
 
-            <p><input type='submit' value='Save And Continue' onclick="validate(this.form)"></p>
+            <p><input type='submit' value='Save And Continue' onclick="formSubmit(this.form)"></p>
 			</div>
         </form> 
 			</section>
