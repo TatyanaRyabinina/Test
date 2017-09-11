@@ -13,29 +13,104 @@ $(document).ready(function() {
 				source: availableCountry
 			});		
 		});
-	})
+	})	
 		
-})
-
+	$.fn.serializeObject = function() {
+		var o = {};
+			a = this.serializeArray();
+		$.each(a, function() {
+			if (o[this.name] !== undefined) {
+				if (!o[this.name].push) {
+					o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || " ");
+            } else {
+					o[this.name] = this.value || " ";
+            }
+        });
+		return o;
+	};
+	
+})			
 function formSubmit(form) {
-    var isValid = validate(form);
+    var self = this,
+		form = $(form),
+		isValid = validate(form);
     if (isValid) {
-		
+		var inputs = form.serializeObject();
+			self.objInfo = JSON.stringify(inputs);		
+		form.html("<label>" + inputs.firstName + " " + inputs.lastName + "</label><br><label>" + inputs.county +"</label><br><label>" + inputs.phone + "</label>");
+		$("#pickupForm>div").attr("hidden", false);
 	}
 	event.preventDefault();
 }
 
+function submitPickup(form) {
+	var self = this,
+		form = $(form),
+		firstRadio = $("#one"),
+		isValid;
+	if(firstRadio.prop("checked")) {
+		var objPickup = {};
+		form.html("<label>" + firstRadio.parent().text() + "</label>"); 
+	} else {
+		isValid = validate(form);
+		if (isValid) {
+			var inputs = form.serializeObject(),
+				self.objPickup = JSON.stringify(inputs);		
+			form.html("<label>Assistant Pickup</label><br><label>" + inputs.firstName + " " + inputs.lastName + "</label><br><label>" + inputs.email +"</label><br><label>" + inputs.phone + "</label>");
+		}
+	}
+	$("#paymentForm>div").attr("hidden", false);
+
+	event.preventDefault();
+
+}
+
+
+function submitPayment(form){
+	var form = $(form),
+		isValid = validate(form);
+	if (isValid) {
+		var inputs = form.serializeObject(),
+			self.objPayment = JSON.stringify(inputs);		
+
+	}
+		
+	
+			event.preventDefault();
+}
+
+function checkRadio(){
+	if($("#one").prop("checked")) {
+		$("#inputsForm").attr("hidden", true);
+		$("#pickupForm").attr("novalidate", "");
+	} else {
+		$("#inputsForm").removeAttr("hidden");
+		$("#pickupForm").removeAttr("novalidate");
+	}	
+}
 
 function validate(form) {
-	var inputs = $(form).find(":input"),
-		valid = true,
-		$(form).find(".error").remove();
+	var self = this;
+		inputs = form.find(":input:visible"),
+		selects = form.find("select"),
+		valid = true;
+	form.find(".error").remove();
 	inputs.each(function(i, e) {
 		inputValid = self.validateInput(e);
 		if (!inputValid) {
 			valid = false;
 		}
-	 })
+	});
+	
+	selects.each(function(i, e) {
+			dropDownValid = self.validateDropDown(e);
+			if (!dropDownValid) {
+				valid = false;
+			}
+		});
+	
 	 return valid;
 }
       			
@@ -59,7 +134,7 @@ function validateInput(formElements) {
 			if (regExp && regExp.test) {
 				valid = regExp.test(val);
 				if(!valid) {
-					validateErrorMessage = "Only digits!";
+					validateErrorMessage = "Not valid!";
 
 				}
 			}
@@ -76,3 +151,20 @@ function validateInput(formElements) {
 		return valid;
 		
 }
+
+function validateDropDown(formElements) {
+		var select = $(formElements),
+			valid = true,
+			selectVal = select.find("option:first-child").text(),
+			validateErrorMessage = "Not valid";
+			
+		if (selectVal) {
+			valid = false;
+		}
+
+		if (!valid) {
+			select.after("<span class='error'>" + validateErrorMessage + "</span>");
+		}
+
+		return valid;
+	}
