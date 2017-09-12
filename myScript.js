@@ -32,7 +32,7 @@ $(document).ready(function() {
 	};
 	
 })			
-function formSubmit(form) {
+function submitInfo(form) {
     var self = this,
 		form = $(form),
 		isValid = validate(form);
@@ -56,7 +56,7 @@ function submitPickup(form) {
 	} else {
 		isValid = validate(form);
 		if (isValid) {
-			var inputs = form.serializeObject(),
+			var inputs = form.serializeObject();
 				self.objPickup = JSON.stringify(inputs);		
 			form.html("<label>Assistant Pickup</label><br><label>" + inputs.firstName + " " + inputs.lastName + "</label><br><label>" + inputs.email +"</label><br><label>" + inputs.phone + "</label>");
 		}
@@ -72,7 +72,7 @@ function submitPayment(form){
 	var form = $(form),
 		isValid = validate(form);
 	if (isValid) {
-		var inputs = form.serializeObject(),
+		var inputs = form.serializeObject();
 			self.objPayment = JSON.stringify(inputs);		
 
 	}
@@ -158,7 +158,7 @@ function validateDropDown(formElements) {
 			selectVal = select.find("option:first-child").text(),
 			validateErrorMessage = "Not valid";
 			
-		if (selectVal) {
+		if (!selectVal) {
 			valid = false;
 		}
 
