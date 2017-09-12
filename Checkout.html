@@ -14,114 +14,110 @@
     <body>
 	<section>
         <h3>My Personal Info </h3>
-		    <form id='personalInfo'>
+		<form id='personalInfo'>
 			<div>
-			<div>
-                <span>Country </span>
-                <input required name="country" id="countries">
+				<div>
+					<span>Country </span>
+					<input required name="country" id="countries">
 				</div>
-
-            <br>
-			<div>
-
-            <span> First name </span>
+				<br>
+				<div>
+					<span> First name </span>
                     <input required name="firstName" type="text" maxlength="15"> 
-						<span>Last name</span>
+					<span>Last name</span>
                     <input required name="lastName" type="text" maxlength="15">
-            </div>
-
-            <br>
-			<div>
-
-                <span>Phone </span>
-                <input required name="phone" type="text" maxlength="15" pattern="^[0-9]{1,15}$">
 				</div>
-
-            <p><input type='submit' value='Save And Continue' onclick="submitInfo(this.form)"></p>
+				<br>
+				<div>
+					<span>Phone </span>
+					<input required name="phone" type="text" maxlength="15" pattern="^[0-9]{1,15}$">
+				</div>
+				<p>
+					<input type='submit' value='Save And Continue' onclick="submitInfo(this.form)">
+				</p>
 			</div>
         </form> 
-			</section>
+	</section>
 	<section>
         <h3>Pickup</h3>
 		<form id='pickupForm'>
             <div hidden>
-            <label><input type="radio" value="i" id="one" name="radio" onclick="checkRadio()">I will pick it up</label><br>
-            <label><input type="radio" value="someone" id="two" name="radio" onclick="checkRadio()">Someone else will pick it up</label><br>
-
-            <br>
-			<div id="inputsForm">
-            <div>
-                    <span> First name </span>
-                    <input required name="firstName" type="text" maxlength="15"> 
-                    <span>Last name</span>
-                    <input required name="lastName" type="text" maxlength="15">  
-
-            </div>
-            <br>
-
-            <div>
-                <span>Phone </span>
-                <input required name="phone" type="text" maxlength="15" pattern="^[0-9]{1,15}$">
-            </div>
-			<br>
-            <div>
-                <span>E-mail </span>
-                <input required name="email" type="text" maxlength="100" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
-			</div>
-						</div>
-
-            <p>
-            <input type='submit' value='Save And Continue' onclick="submitPickup(this.form)">
-			</p>
+				<label>
+					<input type="radio" value="i" id="one" name="radio" onclick="checkRadio()">I will pick it up
+				</label>
+				<br>
+				<label>
+					<input type="radio" value="someone" id="two" name="radio" onclick="checkRadio()">Someone else will pick it up
+				</label>
+				<br>
+				<br>
+				<div id="inputsForm">
+					<div>
+						<span> First name </span>
+						<input required name="firstName" type="text" maxlength="15"> 
+						<span>Last name</span>
+						<input required name="lastName" type="text" maxlength="15">  
+					</div>
+					<br>
+					<div>
+						<span>Phone </span>
+						<input required name="phone" type="text" maxlength="15" pattern="^[0-9]{1,15}$">
+					</div>
+					<br>
+					<div>
+						<span>E-mail </span>
+						<input required name="email" type="text" maxlength="100" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
+					</div>
+				</div>
+				<p>
+					<input type='submit' value='Save And Continue' onclick="submitPickup(this.form)">
+				</p>
             </div>
         </form>
 		</section>
 		<section>
-		<form id="paymentForm">
-            <h3>Payment</h3>
-            <div hidden>
-            <div>
-                <span>Credit Card Number  </span>
-                <input required name="card" type="text" maxlength="16"> 
-            </div>
-            <br>
-                <div>
-                    <span>Security Code  </span>
-                    <input required name="code" type="text" maxlength="4"> 
+			<h3>Payment</h3>
+			<form id="paymentForm">
+				<div hidden>
+					<div>
+						<span>Credit Card Number  </span>
+						<input required name="card" type="text" maxlength="16"> 
+					</div>
+					<br>
+					<div>
+						<span>Security Code  </span>
+						<input required name="code" type="text" maxlength="4"> 
+					</div>
+					<br>
+					<div>
+						<select name="month">
+							<option value="01">January</option>
+							<option value="02">February </option>
+							<option value="03">March </option>
+							<option value="04">April </option>
+							<option value="05">May </option>
+							<option value="06">June </option>
+							<option value="07">July </option>
+							<option value="08">August </option>
+							<option value="09">September </option>
+							<option value="10">October </option>
+							<option value="11">November </option>
+							<option value="12">December </option>
+						</select>
+						<select name="year">
+							<option value="2017">2017</option>
+							<option value="2018">2018 </option>
+							<option value="2019">2019 </option>
+							<option value="2020">2020 </option>
+							<option value="2021">2021 </option>
+							<option value="2022">2022 </option>
+						</select>
+					</div>
+					<br>
+					<input type='submit' onclick="submitPayment(this.form)" value='Save And Continue'>
 				</div>
-            <br>
-
-            <div>
-                <select name="month">
-					<option value="1">January</option>
-					<option value="2">February </option>
-					<option value="3">March </option>
-					<option value="4">April </option>
-					<option value="5">May </option>
-					<option value="6">June </option>
-					<option value="7">July </option>
-					<option value="8">August </option>
-					<option value="9">September </option>
-					<option value="10">October </option>
-					<option value="11">November </option>
-					<option value="12">December </option>
-				</select>
-				<select name="year">
-					<option value="2017">2017</option>
-					<option value="2018">2018 </option>
-					<option value="2019">2019 </option>
-					<option value="2020">2020 </option>
-					<option value="2021">2021 </option>
-					<option value="2022">2022 </option>
-            </div>
-            <br>
-           
-            
-            <input type='submit' onclick="submitPayment(this.form)" value='Save And Continue'>
-            </div>
-        </form>
+			</form>
 		</section>
-		            <input disabled type='submit' value='Submit My Order'>				
-					
+		<input disabled type='submit' id="submitOrder" value='Submit My Order'>							
 	</body>
 </html>
