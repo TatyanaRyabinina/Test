@@ -1,11 +1,11 @@
-/*section {
-border: 1px solid black;
-}*/
-
-form>div {
+section>form {
 	border: 1px solid black;
 }
 
+label{
+	margin: 10px;
+	
+}
 div {
 	margin: 10px;
 	
@@ -16,4 +16,12 @@ h3 {
 
 .error {
 	color: red;
+}
+
+body{
+	width: 70%;
+}
+
+p>input[type=submit] {
+	 float:right;
 }

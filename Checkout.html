@@ -81,7 +81,7 @@
 				<div hidden>
 					<div>
 						<span>Credit Card Number  </span>
-						<input required name="card" type="text" maxlength="16"> 
+						<input required name="card" type="text" maxlength="16" pattern="^[0-9]{16}$"> 
 					</div>
 					<br>
 					<div>
@@ -114,10 +114,15 @@
 						</select>
 					</div>
 					<br>
-					<input type='submit' onclick="submitPayment(this.form)" value='Save And Continue'>
+					<p>
+						<input type='submit' onclick="submitPayment(this.form)" value='Save And Continue'>
+					</p>
 				</div>
 			</form>
 		</section>
-		<input disabled type='submit' id="submitOrder" value='Submit My Order'>							
+		<br>
+		<p>
+		<input disabled type='submit' id="submitOrder" onclick="submitOrder()" value='Submit My Order'>							
+		</p>
 	</body>
 </html>
