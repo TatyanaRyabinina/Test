@@ -23,9 +23,9 @@ test.checkout = {
 	},
 	submitPickup: function submitPickup(form) {
 		const self = this;
-		let	isValid,
-			pickUpByHimself = $("#pickUpByHimself");
-		var	form = $(form);
+		let pickUpByHimself = $("#pickUpByHimself"),
+			isValid;
+		var form = $(form);
 		if(pickUpByHimself.prop("checked")) {
 			self.objPickup = {};
 			form.html(`<label> ${pickUpByHimself.parent().text()} </label>`); 
@@ -35,7 +35,7 @@ test.checkout = {
 				let inputs = form.serializeObject(),
 					{firstName, lastName, email, phone} = inputs;
 				self.objPickup = JSON.stringify(inputs);		
-			form.html(`<br><label>Assistant Pickup</label><br><label> ${firstName}  ${lastName} </label><br><label> ${email} </label><br><label> ${phone} </label><br>`);
+				form.html(`<br><label>Assistant Pickup</label><br><label> ${firstName}  ${lastName} </label><br><label> ${email} </label><br><label> ${phone} </label><br>`);
 			}
 		}
 		$("#paymentInputs").attr("hidden", false);
