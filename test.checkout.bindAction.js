@@ -13,7 +13,7 @@ test.checkout.bindAction = {
 		});
 		$(document).on("change blur", "input", function (e) {
 			let input = $(this),
-			inputName = input.attr('name');
+				inputName = input.attr('name');
 
 			if(inputName === "country") {
 				let inputVal = input.val(),
