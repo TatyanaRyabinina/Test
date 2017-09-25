@@ -1,6 +1,6 @@
 test.checkout.bindAction = {
 	init: function init(){
-		var self = this;
+		const self = this;
 		$.getJSON("GetCountries.json"
 		).done(response =>  {
 			self.countriesList = response;
