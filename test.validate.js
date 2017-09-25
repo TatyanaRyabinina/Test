@@ -3,6 +3,7 @@
 		const inputs = form.find(":input:visible"),
 			selects = form.find("select");
 		let	valid = true;
+
 		form.find(".error").remove();
 		inputs.each((i, e) => {
 			inputValid = this.validateInput(e);
@@ -10,6 +11,7 @@
 				valid = false;
 			}
 		});
+
 		selects.each((i, e) => {
 			dropDownValid = this.validateDropDown(e);
 			if (!dropDownValid) {
@@ -17,7 +19,7 @@
 			}
 		});
 		return valid;
-	},      			
+	},
 	validateInput: function validateInput(formElement) {
 		let input = $(formElement),
 			val = input.val(),
@@ -26,7 +28,8 @@
 			pattern = input.attr("data-type"),
 			regExpMap = test.regExp,
 			valid = true,
-			validateErrorMessage = "";				
+			validateErrorMessage = "";
+
 		if (required && (!val || val.length === 0)) {
 			valid = false;
 			validateErrorMessage = "Empty field!";
@@ -47,13 +50,14 @@
 		if (!valid) {
 			input.after(`<span class='error'> ${validateErrorMessage} </span>`);
 		}
-		return valid;		
+		return valid;
 	},
 	validateDropDown: function validateDropDown(formElement) {
 		let select = $(formElement),
 			valid = true,
 			selectVal = select.find("option:first-child").text(),
-			validateErrorMessage = "Not valid";		
+			validateErrorMessage = "Not valid";
+
 		if (!selectVal) {
 			valid = false;
 		}
@@ -65,10 +69,10 @@
 };
 
 test.regExp = {
-email: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-tel: /^[0-9]{1,15}$/,
-card: /^[0-9]{16}$/,
-code: /^[0-9]{2,4}$/,
-name: /^[a-zA-Zа-яА-ЯёЁ-]{1,15}$/,
-country: /^[a-zA-Zа-яА-ЯёЁ-]+$/
+	email: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+	tel: /^[0-9]{1,15}$/,
+	card: /^[0-9]{16}$/,
+	code: /^[0-9]{2,4}$/,
+	name: /^[a-zA-Zа-яА-ЯёЁ-]{1,15}$/,
+	country: /^[a-zA-Zа-яА-ЯёЁ-]+$/
 };

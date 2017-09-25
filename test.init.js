@@ -1,0 +1,3 @@
+$(() => {
+	test.checkout.bindAction.init();
+});
