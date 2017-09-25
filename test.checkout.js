@@ -42,7 +42,6 @@ test.checkout = {
 				$("#paymentInputs").attr("hidden", false);
 			}
 		}
-
 		event.preventDefault();
 	},
 	submitPayment: function submitPayment(form){
