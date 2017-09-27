@@ -30,6 +30,7 @@ test.checkout = {
 		if(pickUpByHimself.prop("checked")) {
 			this.objPickup = {};
 			objForm.html(`<label> ${pickUpByHimself.parent().text()} </label>`);
+			$("#paymentInputs").attr("hidden", false);
 		} else {
 			isValid = test.validate.validate(objForm);
 			
