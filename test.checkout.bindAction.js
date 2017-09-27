@@ -1,9 +1,8 @@
 test.checkout.bindAction = {
 	init: function init(){
-		const self = this;
 		$.getJSON("GetCountries.json"
 		).done(response =>  {
-			self.countriesList = response;
+			this.countriesList = response;
 			$("#countries").autocomplete({
 				source: response,
 				select:  (event, ui) => {
@@ -11,15 +10,15 @@ test.checkout.bindAction = {
 				}
 			});
 		});
-		$(document).on("change blur", "input", function (e) {
-			let input = $(this),
+		$(document).on("change blur", "input",  (e) => {
+			let input = $(e.currentTarget),
 				inputName = input.attr('name');
 
 			if(inputName === "country") {
 				let inputVal = input.val(),
 					selectedCountry;
 
-				selectedCountry = $.grep(self.countriesList, (el) => {
+				selectedCountry = $.grep(this.countriesList, (el) => {
 					return el.toLowerCase() === inputVal.toLowerCase();
 				});
 
@@ -29,8 +28,8 @@ test.checkout.bindAction = {
 			}
 			test.validate.validateInput(input);
 		});
-		$(document).on("focus", "input", function (e) {
-			let input = $(this);
+		$(document).on("focus", "input",  (e) => {
+			let input = $(e.currentTarget);
 			input.parent().find(".error").remove();
 		});
 	}
